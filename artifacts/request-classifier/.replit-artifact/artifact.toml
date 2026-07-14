@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Murojaat Turkumlash Tizimi"
+version = "1.0.0"
+id = "artifacts/request-classifier"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26253
+
+[services.development]
+run = "pnpm --filter @workspace/request-classifier run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/request-classifier", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/request-classifier/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26253"
+BASE_PATH = "/"
