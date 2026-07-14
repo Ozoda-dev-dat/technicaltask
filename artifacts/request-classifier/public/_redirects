@@ -1,1 +1,8 @@
-/api/*  https://YOUR_BACKEND_URL/api/:splat  200
+Source:
+/api/*
+
+Destination:
+https://your-backend-name.onrender.com/api/:splat
+
+Status:
+200
